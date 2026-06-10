@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
-import json
 from datetime import datetime
 from urllib.parse import quote
 from dotenv import load_dotenv
@@ -56,37 +55,14 @@ class ConfirmacionForm(FlaskForm):
     asistira = BooleanField('Confirmo mi asistencia', validators=[DataRequired(message='Por favor, confirma tu asistencia.')])
     submit = SubmitField('Enviar confirmación')
 
-def guardar_confirmacion(datos):
-    """Guarda las confirmaciones en un archivo JSON"""
-    try:
-        with open('confirmaciones.json', 'r', encoding='utf-8') as f:
-            confirmaciones = json.load(f)
-    except FileNotFoundError:
-        confirmaciones = []
-    
-    datos['fecha_registro'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    confirmaciones.append(datos)
-    
-    with open('confirmaciones.json', 'w', encoding='utf-8') as f:
-        json.dump(confirmaciones, f, indent=2, ensure_ascii=False)
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = ConfirmacionForm()
     
     if form.validate_on_submit():
-        datos_confirmacion = {
-            'nombre': form.nombre.data,
-            'acompanantes': form.acompanantes.data,
-            'comentarios': form.comentarios.data,
-            'asistira': form.asistira.data
-        }
-        guardar_confirmacion(datos_confirmacion)
+        # Construir mensaje de WhatsApp
+        tu_numero = "524433589329"  # CAMBIAR NUMERO
     
-        # ===== ENVÍO A WHATSAPP =====
-        tu_numero = "524433589329"  # ← CAMBIA ESTO POR TU NÚMERO REAL
-    
-        # Construir el mensaje
         mensaje = f"Hola soy {form.nombre.data}"
     
         if form.acompanantes.data:
@@ -95,18 +71,13 @@ def index():
         if form.comentarios.data:
             mensaje += f". Comentarios: {form.comentarios.data}"
     
-        mensaje += ". Confirmo mi asistencia"
+        mensaje += ". Confirmo mi asistencia."
     
-        # Codificar el mensaje para la URL
+        # Codificar y enviar a WhatsApp
         mensaje_codificado = quote(mensaje)
-    
-        # Crear enlace de WhatsApp
         enlace_whatsapp = f"https://wa.me/{tu_numero}?text={mensaje_codificado}"
-        # =============================
     
         flash('¡Gracias por confirmar tu asistencia! Te esperamos para celebrar juntos.', 'success')
-    
-        # Redirige a WhatsApp en lugar de la misma página
         return redirect(enlace_whatsapp)
     
     # Cuenta regresiva
