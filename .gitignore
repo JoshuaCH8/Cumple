@@ -1,0 +1,8 @@
+# Entorno
+entorno/
+venv/
+env/
+ENV/
+
+# Variable de entorno
+.env

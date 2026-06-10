@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="particles-container"></div>
+
+<!-- Hero Section -->
+<section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h1 class="fade-in-up">Nuestros XV</h1>
+        <div class="names-container">
+            {% for quince in quinceaneras %}
+            <div class="name-card expandable-card" data-name="{{ quince.nombre }}"
+                style="border-color: {{ quince.color }}">
+                <div class="card-front">
+                    <h2>{{ quince.nombre }}</h2>
+                    <p>{{ quince.edad }} años</p>
+                </div>
+                <div class="card-expanded" style="display: none;">
+                    <div class="expanded-content">
+                        <div class="photo-frame">
+                            <!-- Rutas -->
+                            <div class="photo-frame">
+                                {% if quince.nombre == "Camila Ailen" %}
+                                <img src="{{ url_for('static', filename='images/camila_ejemplo.jpg') }}" alt="Jimena Arleth">
+                                {% elif quince.nombre == "Jimena Arleth" %}
+                                <img src="{{ url_for('static', filename='images/jimena_ejemplo.jpg') }}" alt="Camila Ailen">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Foto">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <h3>{{ quince.nombre }}</h3>
+                        <div class="personality-tags">
+                            <span class="tag">{{ quince.edad }} años</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Contador regresivo completo -->
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <div class="countdown-number" id="dias">00</div>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="horas">00</div>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="minutos">00</div>
+                <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="segundos">00</div>
+                <div class="countdown-label">Segundos</div>
+            </div>
+        </div>
+        <a href="#evento" class="btn-invitation mt-4">Ver invitación <i class="fas fa-arrow-down"></i></a>
+    </div>
+</section>
+
+<!-- Sobre Nosotras -->
+<section id="sobre-nosotras" class="about">
+    <div class="container">
+        <h2 class="section-title">Sobre Nosotras</h2>
+        <div class="row">
+            {% for quince in quinceaneras %}
+            <div class="col-md-6 mb-4">
+                <div class="about-card" style="border-top: 4px solid {{ quince.color }}">
+                    <div class="about-icon">
+                        <i class="fas fa-star" style="color: {{ quince.color }}"></i>
+                    </div>
+                    <h3>{{ quince.nombre }}</h3>
+                    <p>{{ quince.descripcion }}</p>
+                    <div class="personality-tags">
+                        <span class="tag">✨ 15 años proximamente...</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Información del Evento Misa -->
+<section id="evento-misa" class="event-info">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-church"></i><br> Misa</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Fecha</h4>
+                    <p>{{ evento_misa.fecha }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Hora</h4>
+                    <p>{{ evento_misa.hora }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{{ evento_misa.url_maps }}" target="_blank" style="color: #FF69B4; text-decoration: none;">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Lugar</h4>
+                        <p>{{ evento_misa.lugar }}</p>
+                        <small>{{ evento_misa.direccion }}</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-4 mb-4">
+            <div class="info-card">
+                <i class="fas fa-heart"></i>
+                <h4>Padres</h4>
+                <p>Jose Alfredo Correa Ventura<br>Nemesis Company Herrera Martinez</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="info-card">
+                <i class="fas fa-crown"></i>
+                <h4>Madrina</h4>
+                <p>Rosa Maria Martinez Herrera</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="evento-fiesta" class="event-info">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-birthday-cake"></i> <br>Fiesta </h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Fecha</h4>
+                    <p>{{ evento_fiesta.fecha }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Hora</h4>
+                    <p>{{ evento_fiesta.hora }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="{{ evento_fiesta.url_maps }}" target="_blank" style="color: #FF69B4; text-decoration: none;">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Lugar</h4>
+                        <p>{{ evento_fiesta.lugar }}</p>
+                        <small>{{ evento_fiesta.direccion }}</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Confirmación de Asistencia -->
+<section id="confirmacion" class="confirmation">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-pencil"></i> <br>Confirma tu Asistencia</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="form-card">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div
+                        class="alert alert-{{ category if category != 'message' else 'info' }} alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.nombre.label(class="form-label") }}
+                            {{ form.nombre(class="form-control", placeholder="Tu nombre") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.acompanantes.label(class="form-label") }}
+                            {{ form.acompanantes(class="form-control", placeholder="Número de personas que te acompañan") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.comentarios.label(class="form-label") }}
+                            {{ form.comentarios(class="form-control", rows="3", placeholder="Algo que nos quieras decir") }}
+                        </div>
+                        <div class="mb-3 form-check">
+                            {{ form.asistira(class="form-check-input") }}
+                            {{ form.asistira.label(class="form-check-label") }}
+                        </div>
+                        {{ form.submit(class="btn-submit") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Galería Preview -->
+<section id="galeria" class="gallery-preview">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-gift"></i> <br>Momentos Especiales</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="gallery-item">
+                    <div class="placeholder-img">
+                        <i class="fas fa-camera"></i>
+                        <p>Próximamente...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="gallery-item" id="btnBailar">
+                    <div class="placeholder-img">
+                        <i class="fas fa-music"></i>
+                        <p>¡Vamos a bailar!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
