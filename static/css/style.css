@@ -1,10 +1,11 @@
+/* style.css - Estilos base (solo estructura, NO colores fijos) */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Importar fuente Eyesome Script */
+/* Importar fuentes */
 @font-face {
     font-family: 'Eyesome Script';
     src: url('/static/fonts/Eyesome Script.otf') format('opentype');
@@ -21,15 +22,15 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
-    color: #1A5276;
+    background: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
 }
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
-    border-bottom: 2px solid #FFFFFF;
+    background: var(--navbar-bg);
+    border-bottom: 2px solid var(--border-bottom);
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
@@ -37,20 +38,20 @@ body {
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #FFFFFF !important;
+    color: var(--text-light) !important;
 }
 
 .navbar-nav .nav-link {
-    color: #FFFFFF !important;
+    color: var(--text-light) !important;
     transition: all 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #E0F7FA !important;
+    color: var(--accent-primary) !important;
     transform: translateY(-2px);
 }
 
-/* Contenedor de partículas - SOLO en secciones */
+/* Contenedor de partículas */
 #particles-container {
     position: fixed;
     top: 0;
@@ -61,29 +62,27 @@ body {
     pointer-events: none;
 }
 
-/* Todas las secciones tienen z-index para estar sobre partículas */
 .hero, .about, .event-info, .confirmation, .gallery-preview {
     position: relative;
     z-index: 1;
 }
 
-/* Navbar y footer SIN partículas debajo */
 .navbar, .footer {
     position: relative;
     z-index: 2;
-    background: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
+    background: var(--navbar-bg);
 }
 
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    background: var(--bg-hero);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #1A5276;
+    color: var(--text-primary);
     padding-top: 100px;
     padding-bottom: 70px;
 }
@@ -94,7 +93,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle, rgba(101,208,238,0.15) 0%, rgba(44,125,160,0.1) 100%);
+    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0.1) 100%);
 }
 
 .hero-content {
@@ -106,8 +105,8 @@ body {
     font-size: 3rem;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease;
-    color: #2C7DA0;
-    text-shadow: 0 0 20px rgba(101,208,238,0.5);
+    color: var(--accent-secondary);
+    text-shadow: var(--shadow-text);
 }
 
 .names-container {
@@ -120,10 +119,7 @@ body {
 }
 
 .name-card {
-    background: radial-gradient(circle at center, 
-                white 50%, 
-                rgba(255,255,255,0.8) 70%, 
-                rgba(255,255,255,0) 100%);
+    background: var(--name-card-bg);
     border-radius: 20px;
     padding: 2rem;
     width: 280px;
@@ -132,20 +128,20 @@ body {
 
 .name-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 40px rgba(101,208,238,0.3);
+    box-shadow: 0 10px 40px var(--accent-glow);
 }
 
 .name-card h2 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, #2C7DA0 0%, #65D0EE 100%);
+    background: var(--btn-bg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .name-card p {
-    color: #65D0EE;
+    color: var(--accent-primary);
     font-size: 1.2rem;
 }
 
@@ -174,7 +170,7 @@ body {
 
 .card-expanded {
     display: none;
-    background: rgba(255,255,255,0.95);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 1.5rem;
     text-align: center;
@@ -193,8 +189,8 @@ body {
     margin: 0 auto 1rem;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #65D0EE;
-    box-shadow: 0 0 20px rgba(101,208,238,0.3);
+    border: 3px solid var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .photo-frame img {
@@ -203,7 +199,6 @@ body {
     object-fit: cover;
 }
 
-/* Asegurar que el contenedor padre no limite la altura */
 .names-container {
     display: flex;
     justify-content: center;
@@ -218,7 +213,7 @@ body {
     top: 15px;
     right: 15px;
     font-size: 1.5rem;
-    color: #65D0EE;
+    color: var(--accent-primary);
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
@@ -226,14 +221,14 @@ body {
 
 .close-card:hover {
     transform: scale(1.1);
-    color: #65D0EE;
+    color: var(--accent-primary);
 }
 
 .click-hint {
     display: block;
     margin-top: 10px;
     font-size: 0.7rem;
-    color: #65D0EE;
+    color: var(--accent-primary);
     opacity: 0.7;
     animation: pulse 1.5s infinite;
 }
@@ -243,7 +238,6 @@ body {
     50% { opacity: 1; }
 }
 
-/* Animación de entrada */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -255,13 +249,11 @@ body {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .expandable-card.expanded {
         width: 90vw;
         height: 400px;
     }
-    
     .photo-frame {
         width: 120px;
         height: 120px;
@@ -270,27 +262,26 @@ body {
 
 .countdown {
     display: inline-block;
-    background: rgba(255,255,255,0.95);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     border-radius: 50px;
     margin-top: 2rem;
-    border: 1px solid #65D0EE;
+    border: 1px solid var(--accent-primary);
 }
 
 .countdown-number {
     font-size: 2rem;
     font-weight: bold;
-    color: #2C7DA0;
+    color: var(--accent-secondary);
 }
 
 .countdown-number small {
     font-size: 1rem;
     margin-left: 0.5rem;
-    color: #1A5276;
+    color: var(--text-primary);
 }
 
-/* Contenedor principal del contador */
 .countdown-container {
     display: flex;
     justify-content: center;
@@ -299,50 +290,43 @@ body {
     margin-top: 2rem;
 }
 
-/* Cada cajita del contador */
 .countdown-box {
-    background: rgba(255,255,255,0.95);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
-    border: 2px solid #65D0EE;
+    border: 2px solid var(--accent-primary);
     border-radius: 15px;
     padding: 1rem 1.5rem;
     text-align: center;
     min-width: 100px;
 }
 
-/* Números grandes */
 .countdown-number {
     font-size: 3rem;
     font-weight: bold;
-    color: #2C7DA0;
+    color: var(--accent-secondary);
     font-family: monospace;
     line-height: 1;
 }
 
-/* Texto debajo de los números */
 .countdown-label {
     font-size: 0.8rem;
-    color: #1A5276;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 0.5rem;
 }
 
-/* Responsive para celular */
 @media (max-width: 768px) {
     .countdown-container {
         gap: 0.8rem;
     }
-    
     .countdown-box {
         padding: 0.8rem 1rem;
         min-width: 70px;
     }
-    
     .countdown-number {
         font-size: 2rem;
     }
-    
     .countdown-label {
         font-size: 0.6rem;
     }
@@ -355,8 +339,8 @@ body {
 .btn-invitation {
     display: inline-block;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
-    color: #FFFFFF;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
@@ -366,54 +350,54 @@ body {
 
 .btn-invitation:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(101,208,238,0.4);
-    color: #FFFFFF;
+    box-shadow: 0 10px 30px var(--btn-shadow);
+    color: var(--btn-text);
 }
 
-/* About Section */
 .about {
     padding: 5rem 0;
-    background: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    background: var(--bg-about);
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #2C7DA0;
-    text-shadow: 0 0 10px rgba(101,208,238,0.3);
+    color: var(--accent-secondary);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .about-card {
-    
-    background: rgba(255,255,255,0.95);
+    background: var(--card-bg);
+    border-top: 50px;
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: var(--card-shadow);
     height: 100%;
-    border: 1px solid rgba(101,208,238,0.3);
+    border: 1px solid var(--border-light);
 }
 
 .about-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(101,208,238,0.2);
-    border-color: #65D0EE;
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--accent-primary);
 }
 
 .about-icon {
+    color: var(--accent-primary); 
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
 .about-card h3 {
     margin-bottom: 1rem;
-    color: #2C7DA0;
+    color: var(--accent-secondary);
 }
 
 .about-card p {
-    color: #1A5276;
+    color: var(--text-primary);
 }
 
 .personality-tags {
@@ -422,8 +406,8 @@ body {
 
 .tag {
     display: inline-block;
-    background: rgba(101,208,238,0.15);
-    color: #2C7DA0;
+    background: var(--tag-bg);
+    color: var(--tag-text);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     margin: 0.2rem;
@@ -433,24 +417,24 @@ body {
 .about-card-container {
     display: flex;
     justify-content: center;
-    width: 100%;  /* Asegura que ocupe todo el ancho */
+    width: 100%;
+    margin-top: 40px;
 }
 
 .about-card {
     width: 90%;
-    margin: 0 auto;  /* Respaldo */
+    margin: 0 auto;
 }
 
-/* Event Info */
 .event-info {
     padding: 5rem 0;
-    background: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
+    background: var(--bg-event);
     position: relative;
 }
 
 .info-card {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(101,208,238,0.3);
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
@@ -460,31 +444,31 @@ body {
 
 .info-card:hover {
     transform: translateY(-5px);
-    border-color: #65D0EE;
-    box-shadow: 0 10px 30px rgba(101,208,238,0.2);
+    border-color: var(--accent-primary);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .info-card i {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: #65D0EE;
+    color: var(--accent-primary);
 }
 
 .info-card h4 {
     margin-bottom: 1rem;
-    color: #2C7DA0;
+    color: var(--accent-secondary);
 }
 
 .info-card p, .info-card small {
-    color: #1A5276;
+    color: var(--text-primary);
 }
 
 .qr-code {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(101,208,238,0.3);
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
     padding: 2rem;
     border-radius: 15px;
-    color: #65D0EE;
+    color: var(--accent-primary);
 }
 
 .blink {
@@ -500,45 +484,44 @@ body {
     100% { background-color: rgba(101,208,238,0.2); }
 }
 
-/* Confirmation Form */
 .confirmation {
     padding: 5rem 0;
-    background: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    background: var(--bg-confirmation);
 }
 
 .form-card {
-    background: rgba(255,255,255,0.95);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(101,208,238,0.2);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
 }
 
 .form-label {
-    color: #2C7DA0;
+    color: var(--accent-secondary);
     font-weight: 500;
 }
 
 .form-control {
     background-color: #FFFFFF;
-    border: 1px solid #65D0EE;
-    color: #1A5276;
+    border: 1px solid var(--accent-primary);
+    color: var(--text-primary);
 }
 
 .form-control:focus {
     background-color: #FFFFFF;
-    border-color: #2C7DA0;
-    color: #1A5276;
-    box-shadow: 0 0 10px rgba(101,208,238,0.3);
+    border-color: var(--accent-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .form-check-label {
-    color: #1A5276;
+    color: var(--text-primary);
 }
 
 .btn-submit {
-    background: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
-    color: #FFFFFF;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
     padding: 0.8rem 2rem;
     border-radius: 50px;
@@ -549,18 +532,17 @@ body {
 
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(101,208,238,0.4);
+    box-shadow: 0 5px 15px var(--btn-shadow);
 }
 
-/* Gallery Preview */
 .gallery-preview {
     padding: 5rem 0;
-    background: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
+    background: var(--bg-gallery);
 }
 
 .gallery-item {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(101,208,238,0.3);
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
     border-radius: 15px;
     overflow: hidden;
     height: 250px;
@@ -572,13 +554,13 @@ body {
 
 .gallery-item:hover {
     transform: scale(1.05);
-    border-color: #65D0EE;
-    box-shadow: 0 10px 30px rgba(101,208,238,0.2);
+    border-color: var(--accent-primary);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .placeholder-img {
     text-align: center;
-    color: #65D0EE;
+    color: var(--accent-primary);
 }
 
 .placeholder-img i {
@@ -587,36 +569,33 @@ body {
 }
 
 .placeholder-img p {
-    color: #1A5276;
+    color: var(--text-primary);
 }
 
-/* Efecto cuando la canción está sonando */
 .gallery-item.reproduciendo {
     animation: pulse 1s infinite;
-    border-color: #65D0EE;
-    box-shadow: 0 0 20px rgba(101,208,238,0.5);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* Footer */
 .footer {
-    background: linear-gradient(135deg, #2C7DA0 0%, #1A5276 100%);
-    color: #FFFFFF;
+    background: var(--footer-bg);
+    color: var(--text-light);
     padding: 2rem 0;
-    border-top: 2px solid #65D0EE;
+    border-top: 2px solid var(--accent-primary);
 }
 
 .social-icons a {
     font-size: 1.5rem;
     transition: all 0.3s ease;
-    color: #FFFFFF;
+    color: var(--text-light);
 }
 
 .social-icons a:hover {
     transform: translateY(-3px);
-    color: #65D0EE;
+    color: var(--accent-primary);
 }
 
-/* Mensajes de error del formulario */
 ul.errors {
     list-style: none;
     padding: 0;
@@ -629,12 +608,10 @@ ul.errors li {
     margin-top: 5px;
 }
 
-/* Error en el input */
 .form-control.is-invalid {
     border-color: #ff6b6b;
 }
 
-/* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -655,52 +632,42 @@ ul.errors li {
     font-family: 'Eyesome Script', cursive;
     font-size: 5rem;
     animation: fadeInUp 1s ease;
-    color: #2C7DA0;
+    color: var(--accent-secondary);
 }
 
-/* Fondo MISA - Azul pastel claro */
 #evento-misa {
-    background: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    background: var(--bg-misa);
 }
 
-/* Fondo FIESTA - Azul vibrante */
 #evento-fiesta {
-    background: linear-gradient(135deg, #A9D6E5 0%, #65D0EE 100%);
+    background: var(--bg-fiesta);
 }
 
-/* Sobre Nosotras - Azul lavanda */
 .about {
-    background: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
+    background: var(--bg-about);
 }
 
-/* Confirmación - Azul muy claro */
 .confirmation {
-    background: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    background: var(--bg-confirmation);
 }
 
-/* Galería - Azul champagne */
 .gallery-preview {
-    background: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    background: var(--bg-gallery);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2rem;
     }
-    
     .name-card h2 {
         font-size: 1.8rem;
     }
-    
     .section-title {
         font-size: 2rem;
     }
-    
     .names-container {
         gap: 1rem;
     }
-    
     .name-card {
         padding: 1.5rem;
     }

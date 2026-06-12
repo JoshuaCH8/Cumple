@@ -1,0 +1,60 @@
+/* theme-dance.css - Tema Dance (Negro y Dorado) */
+:root {
+    /* Fondos principales */
+    --bg-primary: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --bg-secondary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --bg-hero: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --bg-about: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --bg-event: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --bg-confirmation: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --bg-gallery: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    
+    /* Fondos específicos */
+    --bg-misa: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --bg-fiesta: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    
+    /* Navbar y Footer */
+    --navbar-bg: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --footer-bg: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    --border-bottom: #FFD700;
+    
+    /* Textos */
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFD700;
+    --text-light: #FFD700;
+    --text-muted: #CCCCCC;
+    
+    /* Acentos */
+    --accent-primary: #FFD700;
+    --accent-secondary: #DAA520;
+    --accent-glow: rgba(255,215,0,0.3);
+    --accent-glow-light: rgba(255,215,0,0.15);
+    
+    /* Tarjetas */
+    --card-bg: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    --card-border: rgba(255,215,0,0.3);
+    --card-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    --card-shadow-hover: 0 10px 30px rgba(255,215,0,0.2);
+    
+    /* Tarjeta de nombre (radial gradient) */
+    --name-card-bg: radial-gradient(circle at center, 
+                    #2c2c2c 50%, 
+                    rgba(44,44,44,0.8) 70%, 
+                    rgba(0,0,0,0) 100%);
+    
+    /* Botones */
+    --btn-bg: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+    --btn-text: #000000;
+    --btn-shadow: rgba(255,215,0,0.4);
+    
+    /* Bordes */
+    --border-color: #FFD700;
+    --border-light: rgba(255,215,0,0.3);
+    
+    /* Sombras */
+    --shadow-text: 0 0 20px rgba(255,215,0,0.5);
+    
+    /* Tags */
+    --tag-bg: rgba(255,215,0,0.15);
+    --tag-text: #FFD700;
+}

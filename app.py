@@ -18,14 +18,14 @@ QUINCEANERAS = [
         'edad': 14,
         'descripcion': 'Describete',
         'color': '#65D0EE',  
-        'foto': 'camila_ejemplo.jpg'
+        'foto': 'camilaAilen.jpg'
     },
     {
         'nombre': 'Jimena Arleth',
         'edad': 14,
         'descripcion': 'Describete',
         'color': '#65D0EE',  
-        'foto': 'jimena_ejemplo.jpg'
+        'foto': 'jimenaArleth.jpg'
     }
 ]
 

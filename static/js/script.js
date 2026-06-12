@@ -52,11 +52,7 @@ $(document).ready(function () {
             }
             // Si está cerrada, la abre y cierra las demás
             else {
-                // Cerrar otras tarjetas abiertas
-                document.querySelectorAll('.expandable-card.expanded').forEach(otherCard => {
-                    otherCard.classList.remove('expanded');
-                });
-                // Abrir esta
+                // Abrir 
                 card.classList.add('expanded');
             }
         });
@@ -124,19 +120,22 @@ $(document).ready(function () {
     // Control de la canción "Vamos a bailar"
     const btnBailar = document.getElementById('btnBailar');
     const cancion = document.getElementById('cancionBailar');
+    const themeCss = document.getElementById('theme-css');
     let cancionReproduciendo = false;
 
-    if (btnBailar && cancion) {
+    if (btnBailar && cancion && themeCss) {
         btnBailar.addEventListener('click', function () {
             if (cancionReproduciendo) {
                 // Detener canción
                 cancion.pause();
                 cancion.currentTime = 0;  // Reinicia al inicio
+                themeCss.href = "/static/css/theme-normal.css"; 
                 cancionReproduciendo = false;
                 btnBailar.classList.remove('reproduciendo');  // ← Quita efecto
             } else {
                 // Reproducir canción
                 cancion.play();
+                themeCss.href = "/static/css/theme-dance.css"; 
                 cancionReproduciendo = true;
                 btnBailar.classList.add('reproduciendo');
             }

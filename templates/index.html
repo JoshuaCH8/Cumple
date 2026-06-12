@@ -23,10 +23,10 @@
                             <!-- Rutas -->
                             <div class="photo-frame">
                                 {% if quince.nombre == "Camila Ailen" %}
-                                <img src="{{ url_for('static', filename='images/camila_ejemplo.jpg') }}"
+                                <img src="{{ url_for('static', filename='images/camilaAilen.jpg') }}"
                                     alt="Jimena Arleth">
                                 {% elif quince.nombre == "Jimena Arleth" %}
-                                <img src="{{ url_for('static', filename='images/jimena_ejemplo.jpg') }}"
+                                <img src="{{ url_for('static', filename='images/jimenaArleth.jpg') }}"
                                     alt="Camila Ailen">
                                 {% else %}
                                 <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Foto">
@@ -72,9 +72,9 @@
         <div class="row">
 
             <div class="col-md-6 mb-4 about-card-container">
-                <div class="about-card" style="border-top: 4px solid {{ quinceaneras[0].color }}">
+                <div class="about-card">
                     <div class="about-icon">
-                        <i class="fas fa-star" style="color: {{ quinceaneras[0].color }}"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <p>"Ser dos no significa el doble de todo, sino el doble de sueños, abrazos y alegrías. Y hoy
                         queremos que ese doble de felicidad lo vivan con nosotras."

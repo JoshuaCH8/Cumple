@@ -1,0 +1,60 @@
+/* theme-normal.css - Tema Azul (por defecto) */
+:root {
+    /* Fondos principales */
+    --bg-primary: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
+    --bg-secondary: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    --bg-hero: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    --bg-about: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    --bg-event: linear-gradient(135deg, #E0F7FA 0%, #F0F8FF 100%);
+    --bg-confirmation: linear-gradient(135deg, #F0F8FF 0%, #E0F7FA 100%);
+    --bg-gallery: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    
+    /* Fondos específicos */
+    --bg-misa: linear-gradient(135deg, #E0F7FA 0%, #A9D6E5 100%);
+    --bg-fiesta: linear-gradient(135deg, #A9D6E5 0%, #65D0EE 100%);
+    
+    /* Navbar y Footer */
+    --navbar-bg: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
+    --footer-bg: linear-gradient(135deg, #2C7DA0 0%, #1A5276 100%);
+    --border-bottom: #FFFFFF;
+    
+    /* Textos */
+    --text-primary: #1A5276;
+    --text-secondary: #2C7DA0;
+    --text-light: #FFFFFF;
+    --text-muted: #1A5276;
+    
+    /* Acentos */
+    --accent-primary: #65D0EE;
+    --accent-secondary: #2C7DA0;
+    --accent-glow: rgba(101,208,238,0.3);
+    --accent-glow-light: rgba(101,208,238,0.15);
+    
+    /* Tarjetas */
+    --card-bg: rgba(255,255,255,0.95);
+    --card-border: rgba(101,208,238,0.3);
+    --card-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    --card-shadow-hover: 0 10px 30px rgba(101,208,238,0.2);
+    
+    /* Tarjeta de nombre (radial gradient) */
+    --name-card-bg: radial-gradient(circle at center, 
+                    white 50%, 
+                    rgba(255,255,255,0.8) 70%, 
+                    rgba(255,255,255,0) 100%);
+    
+    /* Botones */
+    --btn-bg: linear-gradient(135deg, #65D0EE 0%, #2C7DA0 100%);
+    --btn-text: #FFFFFF;
+    --btn-shadow: rgba(101,208,238,0.4);
+    
+    /* Bordes */
+    --border-color: #65D0EE;
+    --border-light: rgba(101,208,238,0.3);
+    
+    /* Sombras */
+    --shadow-text: 0 0 20px rgba(101,208,238,0.5);
+    
+    /* Tags */
+    --tag-bg: rgba(101,208,238,0.15);
+    --tag-text: #2C7DA0;
+}
