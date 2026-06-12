@@ -115,17 +115,17 @@ body {
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .name-card {
-    font-size: smaller;
-    background: rgba(255,255,255,0.95);
-    padding: 2rem;
+    background: radial-gradient(circle at center, 
+                white 50%, 
+                rgba(255,255,255,0.8) 70%, 
+                rgba(255,255,255,0) 100%);
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-    border-top: 4px solid #65D0EE;
+    padding: 2rem;
     width: 280px;
     text-align: center;
 }
@@ -385,6 +385,7 @@ body {
 }
 
 .about-card {
+    
     background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 15px;
@@ -427,6 +428,17 @@ body {
     border-radius: 20px;
     margin: 0.2rem;
     font-size: 0.9rem;
+}
+
+.about-card-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;  /* Asegura que ocupe todo el ancho */
+}
+
+.about-card {
+    width: 90%;
+    margin: 0 auto;  /* Respaldo */
 }
 
 /* Event Info */
@@ -473,6 +485,19 @@ body {
     padding: 2rem;
     border-radius: 15px;
     color: #65D0EE;
+}
+
+.blink {
+    animation: blinkColor 3s ease-in-out infinite;
+    display: inline-block;
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+@keyframes blinkColor {
+    0% { background-color: rgba(101,208,238,0.2); }
+    50% { background-color: rgba(105, 183, 255, 0.5); }
+    100% { background-color: rgba(101,208,238,0.2); }
 }
 
 /* Confirmation Form */

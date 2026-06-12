@@ -37,7 +37,7 @@
     {% endblock %}
 
     <!-- Reproductor oculto -->
-    <audio id="cancionBailar" style="display: none;">
+    <audio id="cancionBailar" loop>
         <source src="{{ url_for('static', filename='audio/cancion.mp3') }}" type="audio/mpeg">
     </audio>
 

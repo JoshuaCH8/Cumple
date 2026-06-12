@@ -23,9 +23,11 @@
                             <!-- Rutas -->
                             <div class="photo-frame">
                                 {% if quince.nombre == "Camila Ailen" %}
-                                <img src="{{ url_for('static', filename='images/camila_ejemplo.jpg') }}" alt="Jimena Arleth">
+                                <img src="{{ url_for('static', filename='images/camila_ejemplo.jpg') }}"
+                                    alt="Jimena Arleth">
                                 {% elif quince.nombre == "Jimena Arleth" %}
-                                <img src="{{ url_for('static', filename='images/jimena_ejemplo.jpg') }}" alt="Camila Ailen">
+                                <img src="{{ url_for('static', filename='images/jimena_ejemplo.jpg') }}"
+                                    alt="Camila Ailen">
                                 {% else %}
                                 <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="Foto">
                                 {% endif %}
@@ -66,22 +68,26 @@
 <!-- Sobre Nosotras -->
 <section id="sobre-nosotras" class="about">
     <div class="container">
-        <h2 class="section-title">Sobre Nosotras</h2>
+        <h2 class="section-title">Con Mucha Ilusión Les Compartimos...</h2>
         <div class="row">
-            {% for quince in quinceaneras %}
-            <div class="col-md-6 mb-4">
-                <div class="about-card" style="border-top: 4px solid {{ quince.color }}">
+
+            <div class="col-md-6 mb-4 about-card-container">
+                <div class="about-card" style="border-top: 4px solid {{ quinceaneras[0].color }}">
                     <div class="about-icon">
-                        <i class="fas fa-star" style="color: {{ quince.color }}"></i>
+                        <i class="fas fa-star" style="color: {{ quinceaneras[0].color }}"></i>
                     </div>
-                    <h3>{{ quince.nombre }}</h3>
-                    <p>{{ quince.descripcion }}</p>
+                    <p>"Ser dos no significa el doble de todo, sino el doble de sueños, abrazos y alegrías. Y hoy
+                        queremos que ese doble de felicidad lo vivan con nosotras."
+
+                        "Gracias por acompañarnos no solo esta noche, sino en cada paso de este camino. Su cariño es el
+                        mejor regalo que podemos recibir."
+                    </p>
                     <div class="personality-tags">
                         <span class="tag">✨ 15 años proximamente...</span>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+
         </div>
     </div>
 </section>
@@ -110,8 +116,8 @@
                     <div class="info-card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h4>Lugar</h4>
-                        <p>{{ evento_misa.lugar }}</p>
-                        <small>{{ evento_misa.direccion }}</small>
+                        <p>{{ evento_misa.lugar }}</p><br>
+                        <small class="blink">{{ evento_misa.direccion }}</small>
                     </div>
                 </a>
             </div>
@@ -159,7 +165,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <h4>Lugar</h4>
                         <p>{{ evento_fiesta.lugar }}</p>
-                        <small>{{ evento_fiesta.direccion }}</small>
+                        <small class="blink">{{ evento_fiesta.direccion }}</small>
                     </div>
                 </a>
             </div>

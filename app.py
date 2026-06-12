@@ -9,9 +9,7 @@ import os
 
 app = Flask(__name__)
 
-load_dotenv()
-
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.secret_key = 'Bj8hermanas8.'
 
 # Datos de las quinceañeras
 QUINCEANERAS = [
