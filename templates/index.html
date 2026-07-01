@@ -83,7 +83,9 @@
                         mejor regalo que podemos recibir."
                     </p>
                     <div class="personality-tags">
-                        <span class="tag fas fa-star"></span> <span style="font-family: 'Courier New', monospace; font-weight: bold;">15 años proximamente...</span>
+                        <span class="tag fas fa-star"></span> <span
+                            style="font-family: 'Courier New', monospace; font-weight: bold;">15 años
+                            proximamente...</span>
                     </div>
                 </div>
             </div>
@@ -199,10 +201,6 @@
                             {{ form.nombre(class="form-control", placeholder="Tu nombre") }}
                         </div>
                         <div class="mb-3">
-                            {{ form.acompanantes.label(class="form-label") }}
-                            {{ form.acompanantes(class="form-control", placeholder="Número de personas que te acompañan") }}
-                        </div>
-                        <div class="mb-3">
                             {{ form.comentarios.label(class="form-label") }}
                             {{ form.comentarios(class="form-control", rows="3", placeholder="Algo que nos quieras decir") }}
                         </div>
@@ -242,4 +240,63 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Función de nieve directa (sin esperar DOMContentLoaded)
+    function crearNieveDirecta() {
+
+        const container = document.getElementById('particles-container');
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = '';
+        const cantidad = 50;
+
+        for (let i = 0; i < cantidad; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * 8 + 4;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100 - 20;
+
+            particle.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: radial-gradient(circle, #FFFFFF 0%, rgba(255,255,255,0.6) 100%);
+                border-radius: 50%;
+                left: ${x}%;
+                top: ${y}%;
+                opacity: ${Math.random() * 0.5 + 0.3};
+                pointer-events: none;
+                z-index: 9999;
+            `;
+            container.appendChild(particle);
+
+            // Animación individual
+            let posY = y;
+            let posX = x;
+            const velocidadY = Math.random() * 1.5 + 0.5;
+            const velocidadX = (Math.random() - 0.5) * 0.5;
+
+            setInterval(() => {
+                posY += velocidadY * 0.1;
+                posX += velocidadX * 0.1;
+
+                if (posY > 110) {
+                    posY = -10;
+                    posX = Math.random() * 100;
+                }
+                if (posX > 100) posX = -5;
+                if (posX < -5) posX = 100;
+
+                particle.style.top = posY + '%';
+                particle.style.left = posX + '%';
+            }, 50);
+        }
+    }
+
+    // Ejecutar inmediatamente
+    crearNieveDirecta();
+</script>
 {% endblock %}

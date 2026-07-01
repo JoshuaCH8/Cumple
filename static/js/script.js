@@ -58,7 +58,7 @@ $(document).ready(function () {
         });
     });
 
-    // Cerrar con tecla ESC (opcional, pero útil)
+    // Cerrar con tecla ESC 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             document.querySelectorAll('.expandable-card.expanded').forEach(card => {
@@ -129,57 +129,117 @@ $(document).ready(function () {
                 // Detener canción
                 cancion.pause();
                 cancion.currentTime = 0;  // Reinicia al inicio
-                themeCss.href = "/static/css/theme-normal.css"; 
+                themeCss.href = "/static/css/theme-normal.css";
                 cancionReproduciendo = false;
                 btnBailar.classList.remove('reproduciendo');  // ← Quita efecto
             } else {
                 // Reproducir canción
                 cancion.play();
-                themeCss.href = "/static/css/theme-dance.css"; 
+                themeCss.href = "/static/css/theme-dance.css";
                 cancionReproduciendo = true;
                 btnBailar.classList.add('reproduciendo');
             }
         });
     }
 
-    // Efecto de partículas (opcional)
-    function createParticles() {
-        if ($('.hero').length) {
-            for (var i = 0; i < 50; i++) {
-                var particle = $('<div class="particle"></div>');
-                particle.css({
-                    position: 'absolute',
-                    width: Math.random() * 5 + 'px',
-                    height: Math.random() * 5 + 'px',
-                    background: 'rgba(255,255,255,' + Math.random() + ')',
-                    left: Math.random() * 100 + '%',
-                    top: Math.random() * 100 + '%',
-                    borderRadius: '50%',
-                    pointerEvents: 'none'
-                });
-                $('.hero').append(particle);
+    cancion.addEventListener('play', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        // Expandir ambas tarjetas
+        document.querySelectorAll('.expandable-card').forEach(card => {
+            if (!card.classList.contains('expanded')) {
+                card.classList.add('expanded');
             }
+        });
+    });
+
+    function iniciarNieve() {
+        const container = document.getElementById('particles-container');
+        if (!container) {
+            console.error('❌ Contenedor de partículas no encontrado');
+            return;
         }
+
+        console.log('❄️ Iniciando nieve en toda la página...');
+        container.innerHTML = '';
+
+        const cantidad = 70;
+        const particulas = [];
+
+        for (let i = 0; i < cantidad; i++) {
+            const p = document.createElement('div');
+            const size = Math.random() * 10 + 4;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100 - 30;
+            const velocidadY = Math.random() * 1.2 + 0.3;
+            const velocidadX = (Math.random() - 0.5) * 0.4;
+            const opacidad = Math.random() * 0.4 + 0.3;
+
+            p.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: radial-gradient(circle at 30% 30%, #FFFFFF, rgba(200,220,255,0.6));
+            border-radius: 50%;
+            left: ${x}%;
+            top: ${y}%;
+            opacity: ${opacidad};
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 6px rgba(255,255,255,0.2);
+        `;
+
+            container.appendChild(p);
+
+            particulas.push({
+                el: p,
+                x: x,
+                y: y,
+                vy: velocidadY,
+                vx: velocidadX,
+                size: size
+            });
+        }
+
+        console.log('✅ ' + particulas.length + ' copos de nieve creados');
+
+        // Animación
+        function animar() {
+            for (const p of particulas) {
+                p.y += p.vy * 0.08;
+                p.x += p.vx * 0.08;
+
+                // Rebote lateral
+                if (p.x > 100) p.x = -5;
+                if (p.x < -5) p.x = 100;
+
+                // Reiniciar al salir abajo
+                if (p.y > 110) {
+                    p.y = -10;
+                    p.x = Math.random() * 100;
+                    p.vy = Math.random() * 1.2 + 0.3;
+                    p.vx = (Math.random() - 0.5) * 0.4;
+                }
+
+                p.el.style.top = p.y + '%';
+                p.el.style.left = p.x + '%';
+
+                // Girar ligeramente mientras caen
+                const rotacion = p.y * 0.3;
+                p.el.style.transform = `rotate(${rotacion}deg)`;
+            }
+
+            requestAnimationFrame(animar);
+        }
+
+        animar();
     }
 
-    // Agregar animación
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(0px);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    createParticles();
+    // Ejecutar al cargar la página (con varios métodos de respaldo)
+    window.addEventListener('load', iniciarNieve);
+    document.addEventListener('DOMContentLoaded', iniciarNieve);
+    setTimeout(iniciarNieve, 500);
 });

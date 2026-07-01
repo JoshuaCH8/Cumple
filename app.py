@@ -48,7 +48,6 @@ EVENTO_FIESTA = {
 
 class ConfirmacionForm(FlaskForm):
     nombre = StringField('Tu nombre', validators=[DataRequired(message='Por favor, ingresa tu nombre.')])
-    acompanantes = StringField('Número de acompañantes')
     comentarios = TextAreaField('Comentarios')
     asistira = BooleanField('Confirmo mi asistencia', validators=[DataRequired(message='Por favor, confirma tu asistencia.')])
     submit = SubmitField('Enviar confirmación')
@@ -62,9 +61,6 @@ def index():
         tu_numero = "524433589329"  # CAMBIAR NUMERO
     
         mensaje = f"Hola soy {form.nombre.data}"
-    
-        if form.acompanantes.data:
-            mensaje += f", vengo con {form.acompanantes.data} acompañantes"
     
         if form.comentarios.data:
             mensaje += f". Comentarios: {form.comentarios.data}"

@@ -655,6 +655,23 @@ ul.errors li {
     background: var(--bg-gallery);
 }
 
+/* Contenedor de partículas - OCUPA TODA LA PANTALLA */
+#particles-container {
+    position: fixed;   /* Fijo para que cubra toda la página */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;  /* Evita que las partículas salgan */
+}
+
+/* Las partículas no deben ser cliqueables */
+.particle-nieve {
+    pointer-events: none !important;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2rem;
