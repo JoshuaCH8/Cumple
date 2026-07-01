@@ -179,7 +179,7 @@ $(document).ready(function () {
         elementos = [];
 
         const cantidadNieve = 60;
-        const cantidadEstrellas = 30;
+        const cantidadEstrellas = 20;
 
         // ---- NIEVE ----
         for (let i = 0; i < cantidadNieve; i++) {
