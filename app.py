@@ -58,18 +58,18 @@ def index():
     
     if form.validate_on_submit():
         # Construir mensaje de WhatsApp
-        tu_numero = "524433589329"  # CAMBIAR NUMERO
+        numero = "524433589329"  
     
         mensaje = f"Hola soy {form.nombre.data}"
     
         if form.comentarios.data:
-            mensaje += f". Comentarios: {form.comentarios.data}"
+            mensaje += f". \n {form.comentarios.data}"
     
-        mensaje += ". Confirmo mi asistencia."
+        mensaje += ". \nConfirmo mi asistencia :)"
     
         # Codificar y enviar a WhatsApp
         mensaje_codificado = quote(mensaje)
-        enlace_whatsapp = f"https://wa.me/{tu_numero}?text={mensaje_codificado}"
+        enlace_whatsapp = f"https://wa.me/{numero}?text={mensaje_codificado}"
     
         flash('¡Gracias por confirmar tu asistencia! Te esperamos para celebrar juntos.', 'success')
         return redirect(enlace_whatsapp)
